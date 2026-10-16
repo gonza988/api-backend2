@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+mport mongoose from "mongoose";
 import {
     DOMAIN_EVENT_TYPES,
     EVENT_STATUSES,

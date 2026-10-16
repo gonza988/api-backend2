@@ -1,3 +1,4 @@
+
 export const authorizeRoles = (...roles) => {
     return (req, res, next) => {
         if (!req.user) {
@@ -15,3 +16,4 @@ export const authorizeRoles = (...roles) => {
         next();
     }
 }
+    

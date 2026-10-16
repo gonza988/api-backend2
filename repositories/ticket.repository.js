@@ -15,8 +15,8 @@ throw new Error('TODO ticketRepository.countConfirmed');
 getByEventAndUser(_eventId, _userId){
     throw new Error('TODO ticketRepository.getByEventAndUser');
 }
-lisByUser(_userId){
-    throw new Error('TODO ticketRepository.lisByUser');
+listByUser(_userId){
+    throw new Error('TODO ticketRepository.listByUser');
 }
 listAll(){
     throw new Error('TODO ticketRepository.listAll');

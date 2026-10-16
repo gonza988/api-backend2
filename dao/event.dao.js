@@ -1,16 +1,32 @@
-export {EventModel} from '../models/event.model.js';
+import { EventModel } from '../models/event.model.js';
 
-export class EventDAO {
-  create(data){
+const ORGANIZER_FIELDS = 'first_name last_name email';
+
+export class EventDao {
+  create(data) {
     return EventModel.create(data);
   }
-  findAll(filters={}){
-return EventModel.find(filters).populate('organizer', 'first_name last_name email');
+
+  findPaginated(filter, { sort, skip, limit }) {
+    return EventModel.find(filter)
+      .populate('organizer', ORGANIZER_FIELDS)
+      .sort(sort)
+      .skip(skip)
+      .limit(limit);
   }
-  findById(id){
-    return EventModel.findById(id).populate('organizer', 'first_name last_name email'.lean());
+
+  count(filter) {
+    return EventModel.countDocuments(filter);
   }
-  updateById(id, _data){
-    return EventModel.findByIdAndUpdate(id,_data);
+
+  findById(id) {
+    return EventModel.findById(id).populate('organizer', ORGANIZER_FIELDS);
+  }
+
+  updateById(id, data) {
+    return EventModel.findByIdAndUpdate(id, data, { new: true, runValidators: true }).populate(
+      'organizer',
+      ORGANIZER_FIELDS
+    );
   }
 }

@@ -1,4 +1,3 @@
-// models/user.model.js
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
 
@@ -27,7 +26,7 @@ const userSchema = new mongoose.Schema({
     },
     role: {
         type: String,
-        enum: ['user', 'admin'],
+        enum: ['user', 'organizer', 'admin'],
         default: 'user'
     }
 }, {

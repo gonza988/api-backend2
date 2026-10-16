@@ -10,7 +10,7 @@ export const getCurrentUser = async (req, res) => {
     const user = req.user;
 
     if (!user) {
-      return res.status(401).json({ 
+      return res.status().json({ 
         status: 'error', 
         message: 'No hay usuario autenticado' 
       });
@@ -100,7 +100,7 @@ export const register = async (req, res, next) => {
             password
         } = req.body;
 
-        if (!first_name || !last_name || !email || !age || !password) {
+        if (!first_name || !last_name || !email || !password) {
             return res.status(400).json({
                 status: 'error',
                 message: 'Todos los campos son obligatorios'
@@ -110,7 +110,7 @@ export const register = async (req, res, next) => {
         const existingUser = await usersRepository.getByEmail(email);
 
         if (existingUser) {
-            return res.status(400).json({
+            return res.status(409).json({
                 status: 'error',
                 message: 'El email ya está registrado'
             });
